@@ -29,13 +29,13 @@ Function UpdateAttributeBonuses()
         If (attribute == 1)
             GlobalVariable perceptionBaseGlobal = AttributeBseGlobals.GetAt(attribute) as GlobalVariable
             GlobalVariable swayBonusDisplayGlobal = AttributeBonusGlobals[attribute].GetAt(0) as GlobalVariable
-            float modifiedAV = perceptionBaseGlobal.GetValue()/10
+            float modifiedAV = perceptionBaseGlobal.GetValue()/10.0
 
             ;Set Actor Values that govern perk bonus
             player.SetValue(AttributeBonusActorValues[attribute].GetAt(0) as ActorValue, 1 + ((modifiedAV * 5) * 0.01))
 
             ;Set global for magic effect display
-            swayBonusDisplayGlobal.SetValue(modifiedAV * 5)
+            swayBonusDisplayGlobal.SetValue(modifiedAV * 5.0)
         EndIf
         If (attribute == 2)
             GlobalVariable enduranceBaseGlobal = AttributeBseGlobals.GetAt(attribute) as GlobalVariable
@@ -49,34 +49,35 @@ Function UpdateAttributeBonuses()
             GlobalVariable charismaBaseGlobal = AttributeBseGlobals.GetAt(attribute) as GlobalVariable
             GlobalVariable buyPriceDisplayGlobal = AttributeBonusGlobals[attribute].GetAt(0) as GlobalVariable
             GlobalVariable sellPriceDisplayGlobal = AttributeBonusGlobals[attribute].GetAt(1) as GlobalVariable
-            float modifiedAV = charismaBaseGlobal.GetValue()/10
+            float modifiedAV = charismaBaseGlobal.GetValue()/10.0
 
             ;Set Actor Values that govern perk bonus
             player.SetValue(AttributeBonusActorValues[attribute].GetAt(0) as ActorValue, 1 - ((modifiedAV * 5) * 0.01))
             player.SetValue(AttributeBonusActorValues[attribute].GetAt(1) as ActorValue, 1 + ((modifiedAV * 5) * 0.01))
 
             ;Set global for magic effect display
-            buyPriceDisplayGlobal.SetValue(modifiedAV * 5)
-            sellPriceDisplayGlobal.SetValue(modifiedAV * 5)
+            buyPriceDisplayGlobal.SetValue(modifiedAV * 5.0)
+            sellPriceDisplayGlobal.SetValue(modifiedAV * 5.0)
             
         EndIf
         If (attribute == 4)
             GlobalVariable intelligenceBaseGlobal = AttributeBseGlobals.GetAt(attribute) as GlobalVariable
             GlobalVariable craftingCostDisplayGlobal = AttributeBonusGlobals[attribute].GetAt(0) as GlobalVariable
-            float modifiedAV = intelligenceBaseGlobal.GetValue()/10
+            float modifiedAV = intelligenceBaseGlobal.GetValue()/10.0
 
             ;Set Actor Values that govern perk bonus
             player.SetValue(AttributeBonusActorValues[attribute].GetAt(0) as ActorValue, 1 + ((modifiedAV * 5) * 0.01))
             ;Set global for magic effect display
-            craftingCostDisplayGlobal.SetValue(modifiedAV * 5)
+            craftingCostDisplayGlobal.SetValue(modifiedAV * 5.0)
             
         EndIf
         If (attribute == 5)
             GlobalVariable agilityBaseGlobal = AttributeBseGlobals.GetAt(attribute) as GlobalVariable
             GlobalVariable accuracyBonusDisplayGlobal = AttributeBonusGlobals[attribute].GetAt(1) as GlobalVariable
-            float modifiedAV = agilityBaseGlobal.GetValue()/10
+            float modifiedAV = agilityBaseGlobal.GetValue()/10.0
 
             GlobalVariable speedBonusGlobal = AttributeBonusGlobals[attribute].GetAt(0) as GlobalVariable
+            GlobalVariable speedBonusDisplayGlobal = AttributeBonusGlobals[attribute].GetAt(2) as GlobalVariable
             GlobalVariable speedBonusModGlobal = AttributeBonusModifierGlobals[attribute].GetAt(0) as GlobalVariable
             If (speedBonusGlobal.GetValue() < 0.5)
                 speedBonusGlobal.SetValue(agilityBaseGlobal.GetValue() * speedBonusModGlobal.GetValue())
@@ -88,18 +89,19 @@ Function UpdateAttributeBonuses()
             player.SetValue(AttributeBonusActorValues[attribute].GetAt(0) as ActorValue, 1 - ((modifiedAV * 5) * 0.01))
             player.SetValue(AttributeBonusActorValues[attribute].GetAt(1) as ActorValue, 1 - ((modifiedAV * 5) * 0.01))
             ;Set global for magic effect display
-            accuracyBonusDisplayGlobal.SetValue(modifiedAV * 5)
+            speedBonusDisplayGlobal.SetValue(speedBonusGlobal.GetValue() * 100)
+            accuracyBonusDisplayGlobal.SetValue(modifiedAV * 5.0)
         EndIf
         If (attribute == 6)
             GlobalVariable luckBaseGlobal = AttributeBseGlobals.GetAt(attribute) as GlobalVariable
             GlobalVariable critChanceBonusDisplayGlobal = AttributeBonusGlobals[attribute].GetAt(0) as GlobalVariable
-            float modifiedAV = luckBaseGlobal.GetValue()/10
+            float modifiedAV = luckBaseGlobal.GetValue()/10.0
 
             ;Set Actor Values that govern perk bonus
-            player.SetValue(AttributeBonusActorValues[attribute].GetAt(0) as ActorValue, modifiedAV * 5)
+            player.SetValue(AttributeBonusActorValues[attribute].GetAt(0) as ActorValue, modifiedAV * 5.0)
 
             ;Set global for magic effect display
-            critChanceBonusDisplayGlobal.SetValue(modifiedAV * 5)
+            critChanceBonusDisplayGlobal.SetValue(modifiedAV * 5.0)
             
         EndIf
         attribute += 1
